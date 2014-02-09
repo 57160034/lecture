@@ -18,3 +18,4 @@
 - ถ้าเจอ ```HTTP Status 500 -  According to TLD or attribute directive in tag file, attribute test does not accept any expressions``` ให้ลองดูบรรทัดบนสุดว่ามี /jsp อยู่หน้า /jstl ไหม
 - ใช้ &lt;c:if&gt; หรือ &lt;c:when&gt; แล้วมันไม่ยอมเข้าเงื่อนไข ให้ลองดูว่าในส่วนของ test="" มีเว้นวรรคเกินก่อนปิด double quote หรือไม่ ถ้ามีเกินให้ลบออก
 - อย่าลืมกด Apply หลังเปลี่ยนแปลงค่าแล้วใน MySQL Workbench
+- หากเจอ Error ![](http://i.imgur.com/093IDfO.jpg)  ให้ copy ตัว jstl-api-1.2.jar กับ  jstl-impl-1.2.jar ไปใส่ใน WEB-INF/libs
