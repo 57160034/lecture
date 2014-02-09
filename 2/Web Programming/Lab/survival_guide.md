@@ -15,3 +15,6 @@
 - 500 แค่บอกว่าเกิดข้อผิดพลาดในโค้ดของเรา อยากรู้ว่าเกิดที่ไหนให้ดูข้างล่าง ![](https://pbs.twimg.com/media/BgCHDU8CMAArTiv.png:large)
 - ทำไปสั่งปริ้นไป ดูว่าค่าต่างๆ ถูกต้องไหม
 - ถ้าขึ้นแบบนี้หมายความว่าอาจจะมีโปรเซส tomcat ค้างอยู่ให้หาทางปิด (terminal, task manager, ...) ![](http://i.stack.imgur.com/JNGQK.png)
+- ถ้าเจอ ```HTTP Status 500 -  According to TLD or attribute directive in tag file, attribute test does not accept any expressions``` ให้ลองดูบรรทัดบนสุดว่ามี /jsp อยู่หน้า /jstl ไหม
+- ใช้ <c:if> หรือ <c:when> แล้วมันไม่ยอมเข้าเงื่อนไข ให้ลองดูว่าในส่วนของ test="" มีเว้นวรรคเกินก่อนปิด double quote หรือไม่ ถ้ามีเกินให้ลบออก
+- อย่าลืมกด Apply หลังเปลี่ยนแปลงค่าแล้วใน MySQL Workbench
