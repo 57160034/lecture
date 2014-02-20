@@ -1,4 +1,4 @@
-dfffffffffffff# OUTLINE
+# OUTLINE
 
 1. [Writing Basic SQL SELECT Statements](https://github.com/itkmitl10/lecture/blob/master/2/Database%20System%20and%20Concepts/Lab/writing_sql_statements.md#writing-sql-statements)
 2. [Restricting and Sorting Data](https://github.com/itkmitl10/lecture/blob/master/2/Database%20System%20and%20Concepts/Lab/restricitng_and_sorting_data.md#restricitng-and-sorting-data)
