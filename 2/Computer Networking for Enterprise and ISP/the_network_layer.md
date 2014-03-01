@@ -108,8 +108,6 @@ Forwarding table สามารถถูกกำหนดโดยผู้ใ
 
 **ข้าม**
 
-## 4.4.4
-
 ## 4.4 The Internet Protocol (IP): Forwarding and Addressing in the Internet
 
 ### 4.4.1 Datagram Format
