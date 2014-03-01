@@ -88,9 +88,9 @@ Forwarding table สามารถถูกกำหนดโดยผู้ใ
 
 ### 4.3.2 Switching
 
-- Switching via memory:
-- Switching via bus: 
-- Switching via interconnection network:
+- Switching via memory: ใช้การคัดลอกแพ็คเกตจากบัฟเฟอร์ขาเข้าไปยังหน่วยความจำ ทำการประมวลผลเพื่อหาโฮสต์ปลาย และทำการคัดลอกไปยังบัฟเฟอร์ขาออก
+- Switching via bus: ขาเข้าทำการส่งแพ็คเกตไปยังขาออกโดยตรงผ่านทาง shared bus เนื่องจากเมื่อแพ็คเกตมาถึงขาเข้าแล้วมีการเพิ่ม switch-internal label ไปยังส่วนหัวของแพ็คเกตเพื่อบ่งบอกขาออกของแพ็คเกต โดยขาออกก็จะตรวจสอบผ่าน label นี้ว่าใช่ของตนเองหรือไม่ หากใช่ก็จะทำการส่ง
+- Switching via interconnection network: ใช้รูปแบบของ cross bar switch ในการส่งข้อมูล ประกอบด้วย bus หลายๆ ตัวเพื่อจัดการปัญหาในเรื่องแบนด์วิธและดีเลย์
 
 ### 4.3.3 Output Processing
 
@@ -98,7 +98,11 @@ Forwarding table สามารถถูกกำหนดโดยผู้ใ
 
 ### 4.3.4 Where Does Queueing Occur?
 
-**ข้าม**
+การที่มีการ queueing เกิดขึ้นนั้นมีสาเหตุได้หลายกรณี เช่น การที่แพ็คเกตถูกเก็บอยู่ในหน่วยความจำเพื่อที่จะรอส่งมากเกินไป หรือแบนด์วิธที่น้อย โดยทางขาออกมีวิธีการจัดการยกตัวอย่างเช่น ใช้หลักการ first-come-first-serve
+
+ในอีกกรณีหนึ่งถ้ามีการรอของแพ็คเกตมากเกินไปจนเกิดกว่า drop แพ็คเกตทิ้งนั้น สามารถหาจำนวนแพ็คเกตที่ถูกดรอปไปได้จากการใช้อัลกอริธึมแบบ Active queue management (AQM) เช่น Random early detection (RED) 
+
+ปัญหา head-of-the-line (HOL) blocking เกิดจากกรณีที่อินเตอร์เฟสขาออกไม่สามารถให้บริการได้ ถึงแม้ว่าแพ็คเกตจะสามารถถูกส่งไปยังขาอื่นได้และถึงปลายทางเดียวกันแต่ก็ไม่ได้ถูกส่ง ทำให้เกิดการรออยู่ในหน่วยความจำหรือบัพเฟอร์ วิธีแก้ไขปัญหานี้คือการใช้ HOL blocking prevention ในการพักแพ็คเกตไว้และยังไม่ดรอป แล้วไปส่งแพ็คเกตอื่นไว้จนกว่าอินเตอร์เฟสขาออกจะสามารถใช้งานได้
 
 ### 4.3.5 The Routing Control Plane
 
@@ -110,20 +114,48 @@ Forwarding table สามารถถูกกำหนดโดยผู้ใ
 
 ### 4.4.1 Datagram Format
 
-ดู IPv4 datagram ได้[ที่นี่](https://en.wikipedia.org/wiki/IPv4)
+ดู IPv4 datagram ได้[ที่นี่](https://en.wikipedia.org/wiki/IPv4) โดยมีส่วนประกอบสำคัญคือ
 
-- Version number: 
-- Header length:
-- Type of service:
-- Datagram length:
-- Identifier, flags, fragmentation offset:
-- Time-to-live
-- Protocol
-- Header checksum
-- Source and destination IP addresses
+- Version number: เป็นฟิลด์ที่ใช้บอกเวอร์ชันของ IP
+- Header length: เป็นฟิลด์ที่ใช้บอกขนาดของส่วนหัวของแพ็คเกต
+- Type of service: เป็นฟิลด์ที่ใช้ในกรณีที่ต้องการใช้ IP datagram รูปแบบอื่น เช่น ต้องการลดดีเลย์ลง หรือเพิ่มความน่าเชื่อถือ
+- Datagram segment: เป็นฟิลด์ที่ใช้เก็บขนาดของแพ็คเกตทั้งหมด
+- Identifier flags, fragmentation offset: ใช้จัดการในเรื่องของ IP fragmentation
+- Time-to-live: ใช้เก็บค่าเพื่อควบคุมไม่ให้แพ็คเกตเกิดลูปในเครือข่าย (default = 32)
+- Protocol: ใช้ในการระบุโปรโตคอลใน Transport layer ที่ใช้
+- Header checksum: ใช้ในการตรวจสอบความผิดพลาดของ IP datagram
+- Source and destination IP addresses: ใช้เก็บที่อยู่ของผู้ส่งและผู้รับ
 - Options
-- Data (payload)
+- Data (payload): ส่วนของข้อมูลจากชั้นก่อน
 
+IP datagram fragmentation เป็นปัญหาที่เกิดขึ้นในกรณีที่ในเลเยอร์ถัดไปมีการกำหนดค่า Maximum transmission unit (MTU) ไว้น้อยกว่าขนาดของแพ็คเกตจริง ทำให้ต้องมีการแบ่งแพ็คเกตเป็นส่วนๆ เพื่อให้สามารถส่งไปได้ (เรียกแต่ละส่วนว่า fragment) โดยจะมีการกำหนดค่า identification, ค่า offset เพื่อบอกว่า fragment นี้เริ่มที่ไบต์ไหน และค่า flag เพื่อบอกในกรณีที่เป็น fragment สุดท้าย
+
+### 4.4.2 IPv4 Addressing
+
+*ข้ามเรื่องการแบ่งไอพี*
+
+DHCP เป็นโปรโตคอลที่ใช้ในการแจกไอพีอัตโนมัติ อยู่ในรูปแบบของ client กับ server โดยที่ client จะต้องทำส่งคำขอไปยัง DHCP server เพื่อให้แจกไอพีมา โดยมีการทำงาน 4 ขั้นตอน คือ
+
+1. DHCP server discovery: เมื่อ client เข้ามาในเครือข่ายแล้ว จะมีการ broadcast DHCP discover message โดยใส่ไอพีตัวเองเป็น 0.0.0.0 ส่งผ่านทาง UDP พอร์ต 67 ไปหา DHCP server
+2. DHCP server offer(s): DHCP server ได้รับ DHCP discover message จาก client และทำการตอบด้วย DHCP offer message แบบ broadcast โดยใน DHCP offer message จะประกอบไปด้วย ID ของ discover message, IP address สำหรับ client, mask และเวลาที่ IP นี้จะสามารถใช้งานได้ (IP address lease time)
+3. DHCP request: client ตอบ DHCP offer message ด้วย DHCP request message เพื่อขอใช้งานพารามิเตอร์ต่างๆ
+4. DHCP ACK: DHCP server ตอบ client ด้วย DHCP ACK message เพื่อยืนยันว่า client สามารถใช้การตั้งค่าดังกล่าวได้
+
+Network address translation (NAT) เป็นกระบวนการในการแปลง private IP ใน LAN ให้เป็น public IP ใน WAN ผ่านทางการกำหนดค่าของ NAT table
+
+UPnP = Universal Plug-n-Play Protocol
+
+### 4.3.4 Internet Control Message Protocol (ICMP)
+
+ICMP เป็นโปรโตคอลที่ใช้ในการตรวจสอบสถานะของระบบ โดยเมื่อส่ง ICMP ไป ผู้รับก็จะทำการตอบค่าตามตารางเพื่อบอกสถานะ [ดูตาราง](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol)
+
+### 4.4.4 IPv6
+
+[ดูเนื้อหา IPv6](https://github.com/itkmitl10/lecture/blob/master/2/Computer%20Networking%20for%20Enterprise%20and%20ISP/IPv6.md#ipv6)
+
+### 4.4.5 IP Security
+
+*ข้าม*
 
 ## 4.7 Broadcast and Multicast Routing
 
