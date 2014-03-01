@@ -45,7 +45,7 @@ Forwarding Table (a.k.a. Routing Table): เป็นองค์ประกอ
 - Network layer เป็นกระบวนการที่ให้ความสนใจในการติดต่อระหว่าง host-to-host ในขณะที่ Transport layer มุ่งไปที่ process-to-process
 - แม้ว่าในเครือข่ายปัจจุบันจะมีการใช้ทั้ง connection และ connectionless แต่ก็ยังคงมีบางเครือข่ายที่ใช้เพียงอย่างใดอย่างหนึ่ง เราจะเรียกเครือข่ายที่มีการใช้ connection เพียงอย่างเดียวว่า **Virtual-circuit (VC) networks** ในขณะเดียวกันเราเรียกเครือข่ายที่มีการใช้ connectionless เพียงอย่างเดียวว่า **Datagram networks**
 
-## 4.2.1 Virtual-Circuit Networks
+### 4.2.1 Virtual-Circuit Networks
 
 กระบวนการทำงานของ VC networks นั้นมีองค์ประกอบสำคัญ 3 อย่าง ดังนี้
 
@@ -105,6 +105,25 @@ Forwarding table สามารถถูกกำหนดโดยผู้ใ
 **ข้าม**
 
 ## 4.4.4
+
+## 4.4 The Internet Protocol (IP): Forwarding and Addressing in the Internet
+
+### 4.4.1 Datagram Format
+
+ดู IPv4 datagram ได้[ที่นี่](https://en.wikipedia.org/wiki/IPv4)
+
+- Version number: 
+- Header length:
+- Type of service:
+- Datagram length:
+- Identifier, flags, fragmentation offset:
+- Time-to-live
+- Protocol
+- Header checksum
+- Source and destination IP addresses
+- Options
+- Data (payload)
+
 
 ## 4.7 Broadcast and Multicast Routing
 
