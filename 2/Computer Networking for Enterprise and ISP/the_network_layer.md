@@ -75,6 +75,37 @@ Forwarding table สามารถถูกกำหนดโดยผู้ใ
 
 ## 4.3 What's Inside a Router?
 
+ในเราท์เตอร์มีองค์ประกอบสำคัญอยู่ 4 ส่วนด้วยกันคือ
+
+1. Input ports
+2. Switching fabric
+3. Output ports
+4. Routing Processor
+
+### 4.3.1 Input Processing
+
+**ข้าม**
+
+### 4.3.2 Switching
+
+- Switching via memory:
+- Switching via bus: 
+- Switching via interconnection network:
+
+### 4.3.3 Output Processing
+
+**ข้าม**
+
+### 4.3.4 Where Does Queueing Occur?
+
+**ข้าม**
+
+### 4.3.5 The Routing Control Plane
+
+**ข้าม**
+
+## 4.4.4
+
 ## 4.7 Broadcast and Multicast Routing
 
 - Broadcast Routing: การส่งแพ็คเกตจากโหนดที่เป็นผู้ส่ง (source node) หนึ่งโหนดไปยังโหนดผู้รับ (destination node) หลายๆ โหนด
