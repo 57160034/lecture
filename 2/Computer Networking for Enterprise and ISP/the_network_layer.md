@@ -184,7 +184,7 @@ LS ใช้หลักการของ Dijkstra algorithm ในการห
 
 การทำ Hot-potato routing คือการที่ AS เมื่อได้รับแพ็คเกตมาแล้วจะทำการส่งให้เร็วที่สุด ไปยัง Gateway ที่มีค่า cost น้อยที่สุด
 
- ## 4.6 Routing in the Internet
+## 4.6 Routing in the Internet
 
 ### 4.6.1 Intra-AS Routing in the Internet: RIP
 
