@@ -74,7 +74,11 @@ Carrier Sense Multiple Access (CSMA)  แบ่งเป็น 2 รูปแบ
 
 ## 5.4 Switch Local Area Networks
 
+Switch ใน LAN ทำหน้าที่ในการ forwarding link-layer โดย ใช้ link-layer address ในเลเยอร์ที่ 2 ดังนั้นใน switch จึงไม่มีการทำ routing ใดๆ
+
 ### 5.4.1 Link-Layer Addressing and ARP
+
+การ addressing ใน Link-layer ทำได้โดยการใช้ link-layer address ที่เรียกว่า MAC มีลักษณะเป็น hexadecimal notation ขนาด 6 ไบต์ โดยทุกๆ NIC จะมี MAC address ไม่ซ้ำกัน และมีค่าถาวร การกำหนด MAC address ให้กับอุปกรณ์ทำโดย IEEE
 
 ### 5.4.2 Ethernet
 
