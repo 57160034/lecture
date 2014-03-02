@@ -78,7 +78,11 @@ Switch ใน LAN ทำหน้าที่ในการ forwarding link-lay
 
 ### 5.4.1 Link-Layer Addressing and ARP
 
-การ addressing ใน Link-layer ทำได้โดยการใช้ link-layer address ที่เรียกว่า MAC มีลักษณะเป็น hexadecimal notation ขนาด 6 ไบต์ โดยทุกๆ NIC จะมี MAC address ไม่ซ้ำกัน และมีค่าถาวร การกำหนด MAC address ให้กับอุปกรณ์ทำโดย IEEE
+การ addressing ใน Link-layer ทำได้โดยการใช้ link-layer address ที่เรียกว่า MAC มีลักษณะเป็น hexadecimal notation ขนาด 6 ไบต์ โดยทุกๆ NIC จะมี MAC address ไม่ซ้ำกัน และมีค่าถาวร การกำหนด MAC address ให้กับอุปกรณ์มีการแบ่งโดย IEEE
+
+MAC address เป็น flat structure แตกต่างกับ IP ที่เป็น hierarchical structure ซึ่งมีการแบ่งเป็น network part, host part
+
+ในเลเยอร์ 2 การจะส่งข้อมูลจะใช้ MAC address ของโฮส์ปลายทางในการอ้างอิง และ broadcast ออกไป (โดยใช้ MAC broadcast address = FF-FF-FF-FF-FF-FF) จะมีเพียงโฮสต์ที่มี MAC address ตรงกันเท่านั้นที่จะทำการรับเฟรมข้อมูล นอกเหนือจากนั้นก็จะดร็อปเฟรมข้อมูลทิ้งไป
 
 ### 5.4.2 Ethernet
 
