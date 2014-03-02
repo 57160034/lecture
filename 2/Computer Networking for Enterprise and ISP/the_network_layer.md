@@ -166,15 +166,47 @@ Routing algorithms แบ่งได้หลายประเภท ตาม
 
 ### 4.5.1 The Link-State (LS) Routing Algorithm
 
-`Warning: เขียนตามความเข้าใจตัวเองสุดๆ`
-
 LS ใช้หลักการของ Dijkstra algorithm ในการหาเส้นทางที่สั้นที่สุด โดยมีขั้นตอนคร่าวๆ ดังนี้
 
 1. โหนดเริ่มต้นจะทำการค้นหาโหนดที่อยู่รอบๆ และเก็บค่า cost มาใส่ตาราง forwarding table (หรือ routing table) และเก็บด้วยว่าโหนดก่อนหน้านี้คือโหนดอะไร 
 2. โหนดเริ่มต้นทำการพิจารณาค่า cost ที่ได้ แล้วเลือกเส้นทางที่ค่า cost น้อยที่สุดไปยังโหนดต่อไป
 3. ทำซ้ำข้อ 1 ใหม่ โดยในการทำทุกครั้งจะมีการคำนวณ cost ใหม่ และถ้าหากมี cost ที่น้อยลงก็จะมีการอัพเดตตารางตามค่านั้น
 
-ปัญหาที่มีเจอใน LS คือการอัพเดตค่าวนซ้ำในกรณีที่โทโปโลยีเป็นวงกลม (Oscillations) 
+ปัญหาที่มีเจอใน LS คือการอัพเดตค่าวนซ้ำในกรณีที่โทโปโลยีเป็นวงกลม (Oscillations)
+
+### 4.5.2 The Distance-Vector (DV) Routing Algorithm
+
+### 4.5.3 Hierarchical Routing
+
+ปัญหาของ LS และ DV จะเกิดขึ้นเมื่อนำไปใช้ในเครือข่ายๆ ขนาดใหญ่มากๆ เพราะจะทำให้เราท์เตอร์ต้องมีการเก็บข้อมูลขนาดใหญ่อย่างสิ้นเปลือง จึงมีการแบ่งกลุ่มของเราท์เตอร์ออกเป็น Autonomous system (AS) โดยในหนึ่ง AS จะมีการใช้อัลกอริธึมเดียวกันหมดเรียกว่า Intra-autonomous system routing protocol โดยมีเราท์เตอร์ตัวหนึ่งทำหน้าที่เชื่อมต่อกับ AS อื่นเรียกว่า Gateway router
+
+สำหรับการพูดคุยกันระหว่าง AS นั้นก็จะใช้โปรโตคอลอีกตัวนึงคือ Inter-autonomous system routing protocol
+
+การทำ Hot-potato routing คือการที่ AS เมื่อได้รับแพ็คเกตมาแล้วจะทำการส่งให้เร็วที่สุด ไปยัง Gateway ที่มีค่า cost น้อยที่สุด
+
+ ## 4.6 Routing in the Internet
+
+### 4.6.1 Intra-AS Routing in the Internet: RIP
+
+Intra-AS Routing เป็นอัลกอริธึมที่ใช้ภายใน AS หรือเรียกอีกอย่างว่า Interior gateway protocols เช่น **Routing Information Protocol (RIP)**, **Open Shortest Path First (OSPF)** หรือโปรโตคอลใหม่อย่าง **IS-IS**
+
+RIP เป็น Distance vector โดยมีการใช้ RIP response message และ RIP advertisements ในการร้องขอการแลกเปลี่ยนข้อมูลทุกๆ 30 วินาที ค่า cost ที่มากที่สุดที่ RIP ทำงานได้คือ 15 hop โดยจะมี RIP table ซึ่งรู้จักกันในชื่อ Routing table คอยเก็บข้อมูลซับเน็ตปลายทาง, เราท์เตอร์ตัวถัดไป และจำนวน hop ก่อนจะถึงโฮสต์ปลายทางอยู่
+
+### 4.6.2 Intra-AS Routing in the Internet: OSPF
+
+OSPF เป็น Link state ที่ใช้วิธีในการ broadcast ข้อมูลไปยังทุกๆ โหนดภายในเวลา 30 นาที  โดยโปรโตคอล OSPF ยังมีความสามารถในการ authentication ด้วย MD5, สนับสนุนการใช้งานผ่าน Multicast หรือในกรณีที่เส้นทางไปยังโฮสต์ปลายทางมีค่า cost เท่ากัน ก็จะสามารถใช้งานเส้นทางทั้งหมดนั้นได้เลยโดยไม่ได้เลือกให้ใช้เส้นทางใดเพียงเส้นทางเดียว
+
+ในการใช้งานจริงนั้น มีการกำหนด Area border routers เพื่อรับผิดชอบในการ routing ออกไปยังนอก OSPF AS และมี Backbone area ซึ่งทำหน้าที่เป็นส่วนหลักในการเชื่อมแต่ละ AS เข้าด้วยกัน
+
+### 4.6.3 Inter-AS Routing
+
+**ข้าม**
+
+### Important!
+
+- Interior gateway routing via link state routing protocols, such as OSPF and IS-IS
+- Interior gateway routing via distance vector routing protocols, such as RIPv2, IGRP and EIGRP
+- Exterior gateway routing. The Border Gateway Protocol (BGP), a path vector routing protocol, is the routing protocol used on the Internet for exchanging traffic between Autonomous Systems.
 
 ## 4.7 Broadcast and Multicast Routing
 
