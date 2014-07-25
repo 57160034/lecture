@@ -19,3 +19,4 @@
 - ใช้ &lt;c:if&gt; หรือ &lt;c:when&gt; แล้วมันไม่ยอมเข้าเงื่อนไข ให้ลองดูว่าในส่วนของ test="" มีเว้นวรรคเกินก่อนปิด double quote หรือไม่ ถ้ามีเกินให้ลบออก
 - อย่าลืมกด Apply หลังเปลี่ยนแปลงค่าแล้วใน MySQL Workbench
 - หากเจอ Error ![](http://i.imgur.com/093IDfO.jpg)  ให้ copy ตัว jstl-api-1.2.jar กับ  jstl-impl-1.2.jar ไปใส่ใน WEB-INF/libs
+- หากต้องการรับ input ภาษาไทย ต้องใส่ ```<meta charset="utf-8">``` ใน html และใส่ ```request.setCharacterEncoding("UTF-8");``` ก่อนรับค่าทุกครั้ง see more [1](http://stackoverflow.com/questions/11002827/html-forms-and-jsp-problems-with-utf-8-character-encoding) [2](http://stackoverflow.com/questions/12968472/how-to-solve-utf-8-in-java)
