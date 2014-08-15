@@ -13,35 +13,54 @@ lecture
 git clone https://github.com/itkmitl10/lecture
 ```
 
-lecture ใน repository ล่าสุด อัพเดตวันที่ 9 กุมภาพันธ์ 2557
+lecture ใน repository ล่าสุด อัพเดตวันที่ 16 สิงหาคม 2557
 
 ```
 .
 ├── 2
 │   ├── Computer Networking for Enterprise and ISP
 │   │   ├── IPv6.md
-│   │   └── Lab
-│   │       └── Dynamic Routing.md
+│   │   ├── Lab
+│   │   │   └── Dynamic Routing.md
+│   │   ├── README.md
+│   │   ├── the_link_layer.md
+│   │   ├── the_network_layer.md
+│   │   └── wireless_and_mobile_networks.md
 │   ├── Database System and Concepts
 │   │   └── Lab
-│   │       ├── README.md
 │   │       ├── controlling_transactions.md
+│   │       ├── displaying_data_from_multiple_tables.md
+│   │       ├── README.md
 │   │       ├── restricitng_and_sorting_data.md
+│   │       ├── sql_editing_commands.md
 │   │       └── writing_sql_statements.md
 │   └── Web Programming
 │       └── Lab
-│           ├── README.md
 │           ├── html.md
 │           ├── jsp.md
+│           ├── README.md
 │           └── survival_guide.md
 ├── 3
-│   └── Information System Security
-│       └── Exam
-│           └── Midterm_Exam_ISS.pdf
+│   ├── Economic for Information Technology
+│   │   └── README.md
+│   ├── Human Interface Design
+│   │   └── README.md
+│   ├── Information System Security
+│   │   └── Exam
+│   │       └── Midterm_Exam_ISS.pdf
+│   └── Software Engineering
+│       └── README.md
 ├── LICENSE
-└── README.md
+├── README.md
+└── selective
+    ├── C++ GUI Programming
+    │   ├── lecture
+    │   │   └── 2014-08-12.md
+    │   └── README.md
+    └── Human and Tourisms
+        └── lecture.md
 
-10 directories, 13 files
+17 directories, 25 files
 ```
 
 # Description
