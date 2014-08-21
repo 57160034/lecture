@@ -13,7 +13,7 @@ lecture
 git clone https://github.com/itkmitl10/lecture
 ```
 
-lecture ใน repository ล่าสุด อัพเดตวันที่ 16 สิงหาคม 2557
+lecture ใน repository ล่าสุด อัพเดตวันที่ 21 สิงหาคม 2557
 
 ```
 .
@@ -28,17 +28,17 @@ lecture ใน repository ล่าสุด อัพเดตวันที�
 │   │   └── wireless_and_mobile_networks.md
 │   ├── Database System and Concepts
 │   │   └── Lab
+│   │       ├── README.md
 │   │       ├── controlling_transactions.md
 │   │       ├── displaying_data_from_multiple_tables.md
-│   │       ├── README.md
 │   │       ├── restricitng_and_sorting_data.md
 │   │       ├── sql_editing_commands.md
 │   │       └── writing_sql_statements.md
 │   └── Web Programming
 │       └── Lab
+│           ├── README.md
 │           ├── html.md
 │           ├── jsp.md
-│           ├── README.md
 │           └── survival_guide.md
 ├── 3
 │   ├── Economic for Information Technology
@@ -46,21 +46,27 @@ lecture ใน repository ล่าสุด อัพเดตวันที�
 │   ├── Human Interface Design
 │   │   └── README.md
 │   ├── Information System Security
-│   │   └── Exam
-│   │       └── Midterm_Exam_ISS.pdf
+│   │   ├── 1.md
+│   │   ├── Exam
+│   │   │   └── Midterm_Exam_ISS.pdf
+│   │   └── README.md
+│   ├── Mobile Device Programming
+│   │   └── Lab
+│   │       ├── README.md
+│   │       └── survival_guide.md
 │   └── Software Engineering
 │       └── README.md
 ├── LICENSE
 ├── README.md
 └── selective
     ├── C++ GUI Programming
-    │   ├── lecture
-    │   │   └── 2014-08-12.md
-    │   └── README.md
+    │   ├── README.md
+    │   └── lecture
+    │       └── 2014-08-12.md
     └── Human and Tourisms
         └── lecture.md
 
-17 directories, 25 files
+19 directories, 29 files
 ```
 
 # Description
