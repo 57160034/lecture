@@ -1,3 +1,5 @@
+# ย้ายไปที่ [http://itkmitl10.github.io/mobile%20device%20programming/2014/08/26/mdp-survival-guide/]
+
 # Survival Guide
 
 - วิธีทำให้ Android Emulator ทำงานเร็วขึ้น
